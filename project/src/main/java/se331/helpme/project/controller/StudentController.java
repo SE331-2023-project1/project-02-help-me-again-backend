@@ -43,9 +43,47 @@ public class StudentController {
                 .advisor(102L)
                 .stu_pic("https://randomuser.me/api/portraits/men/2.jpg")
                 .build());
+        studentList.add(Student.builder()
+                .id(3L)
+                .FirstName("Emily")
+                .LastName("Johnson")
+                .Student_ID("STID-1001")
+                .registered("Mathematics, English Literature, History, Physics, Spanish")
+                .advisor(101L)
+                .stu_pic("https://randomuser.me/api/portraits/women/1.jpg")
+                .build());
+
+        studentList.add(Student.builder()
+                .id(4L)
+                .FirstName("Ethan")
+                .LastName("Smith")
+                .Student_ID("STID-1002")
+                .registered("Physics, Computer Science, Spanish, Biology, Chemistry")
+                .advisor(102L)
+                .stu_pic("https://randomuser.me/api/portraits/men/2.jpg")
+                .build());
+        studentList.add(Student.builder()
+                .id(5L)
+                .FirstName("Emily")
+                .LastName("Johnson")
+                .Student_ID("STID-1001")
+                .registered("Mathematics, English Literature, History, Physics, Spanish")
+                .advisor(101L)
+                .stu_pic("https://randomuser.me/api/portraits/women/1.jpg")
+                .build());
+
+        studentList.add(Student.builder()
+                .id(6L)
+                .FirstName("Ethan")
+                .LastName("Smith")
+                .Student_ID("STID-1002")
+                .registered("Physics, Computer Science, Spanish, Biology, Chemistry")
+                .advisor(102L)
+                .stu_pic("https://randomuser.me/api/portraits/men/2.jpg")
+                .build());
     }
 
-    @GetMapping("StudentView")
+    @GetMapping("students")
     public ResponseEntity<?> getStudentLists(
             @RequestParam(value = "_limit", required = false) Integer perPage,
             @RequestParam(value = "_page", required = false) Integer page) {
@@ -59,9 +97,9 @@ public class StudentController {
         responseHeader.set("x-total-count", String.valueOf(studentList.size()));
 
 
-        for (int i = firstIndex; i < firstIndex + perPage; i++) {
-            output.add(studentList.get(i));
-        }
+//        for (int i = firstIndex; i < firstIndex + perPage; i++) {
+//            output.add(studentList.get(i));
+//        }
 
         try {
             for (int i = firstIndex; i < firstIndex + perPage; i++) {
