@@ -5,12 +5,13 @@ import lombok.Data;
 
 @Data
 @Builder
-public class Student {
+public class Advisor {
     Long id;
     String firstName;
     String lastName;
-    String student_ID;
-    String registered;
-    Number advisor;
-    String stu_pic;
+    String department;
+    String email;
+    String office;
+    String advisor_pic;
 }
+

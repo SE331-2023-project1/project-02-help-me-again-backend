@@ -9,34 +9,29 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.server.ResponseStatusException;
-import se331.helpme.project.controller.StudentController;
+import se331.helpme.project.entity.Advisor;
+import se331.helpme.project.service.AdvisorService;
 
-import jakarta.annotation.PostConstruct;
-import se331.helpme.project.entity.Event;
-import se331.helpme.project.entity.Student;
-import se331.helpme.project.service.StudentService;
-
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
 
-public class StudentController {
+public class AdvisorController {
 
-    final StudentService studentService;
+    final AdvisorService advisorService;
 
 
-    @GetMapping("students")
-    public ResponseEntity<?> getStudentLists(
+    @GetMapping("advisor")
+    public ResponseEntity<?> getAdvisorLists(
             @RequestParam(value = "_limit", required = false) Integer perPage,
             @RequestParam(value = "_page", required = false) Integer page) {
 
-        List<Student> output = null;
-        Integer studentSize = studentService.getStudentSize();
+        List<Advisor> output = null;
+        Integer advisorSize = advisorService.getAdvisorSize();
 
         HttpHeaders responseHeader = new HttpHeaders();
-        responseHeader.set("x-total-count", String.valueOf(studentSize));
+        responseHeader.set("x-total-count", String.valueOf(advisorSize));
 
 
 //        for (int i = firstIndex; i < firstIndex + perPage; i++) {
@@ -44,7 +39,7 @@ public class StudentController {
 //        }
 
         try {
-            output = studentService.getStudents(perPage, page);
+            output = advisorService.getAdvisors(perPage, page);
             return new ResponseEntity<>(output, responseHeader, HttpStatus.OK);
         } catch (IndexOutOfBoundsException ex) {
 
@@ -54,9 +49,9 @@ public class StudentController {
         }
     }
 
-    @GetMapping("students/{id}")
-    public ResponseEntity<?> getStudent(@PathVariable("id") Long id) {
-        Student output = studentService.getStudent(id);
+    @GetMapping("advisor/{id}")
+    public ResponseEntity<?> getAdvisor(@PathVariable("id") Long id) {
+        Advisor output = advisorService.getAdvisor(id);
 
         if (output != null) {
             return ResponseEntity.ok(output);
@@ -68,5 +63,3 @@ public class StudentController {
 
 
 }
-
-
