@@ -8,6 +8,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import se331.helpme.project.entity.Advisor;
+import se331.helpme.project.entity.Announcement;
 import se331.helpme.project.entity.Student;
 import se331.helpme.project.repository.AdvisorRepository;
 import se331.helpme.project.repository.AnnouncementRepository;
@@ -16,6 +17,7 @@ import se331.helpme.project.security.user.Role;
 import se331.helpme.project.security.user.User;
 import se331.helpme.project.security.user.UserRepository;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -62,8 +64,8 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
 
         PasswordEncoder encoder = new BCryptPasswordEncoder();
         User userT1 = new User();
-        userT1.setUsername("TT");
-        userT1.setPassword(encoder.encode("TT"));
+        userT1.setUsername("TT5678");
+        userT1.setPassword(encoder.encode("TT5678"));
         userT1.setFirstname("Chartchai");
         userT1.setLastname("Doungsa-ard");
         userT1.setRoles(List.of(Role.ROLE_ADVISOR));
@@ -77,8 +79,8 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         advisorRepository.save(advisor1);
 
         User userT2 = new User();
-        userT2.setUsername("PP");
-        userT2.setPassword(encoder.encode("PP"));
+        userT2.setUsername("PP1234");
+        userT2.setPassword(encoder.encode("PP1234"));
         userT2.setFirstname("Tei");
         userT2.setLastname("Pathathai");
         userT2.setRoles(List.of(Role.ROLE_ADVISOR));
@@ -99,7 +101,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         userS1.setLastname("Yamkamol");
         userS1.setRoles(List.of(Role.ROLE_STUDENT));
         userS1.setDepartment("Software Engineer");
-        userS1.setImages(Collections.singletonList("https://study.uq.edu.au/sites/default/files/styles/hero_xl/public/2022-06/admissions-hero.jpg?h=2087dbb7&itok=Tx6Xi1cU"));
+        userS1.setImages(Collections.singletonList("https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freepik.com%2Ffree-photos-vectors%2Fsmiling-student&psig=AOvVaw1m_sHaYID4yu3DCTynn3DG&ust=1698185254998000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCICV4ZiXjYIDFQAAAAAdAAAAABAE"));
         userRepository.save(userS1);
 
         Student student1 = new Student();
@@ -149,6 +151,42 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         advisor2.getStudentList().add(student3);
         student3.setUser(userS3);
         student3.setAdvisor(advisor2);
+
+
+        User admin;
+        admin = User.builder()
+                .username("admin")
+                .password(encoder.encode("admin"))
+                .firstname("admin")
+                .lastname("admin")
+                .email("admin@cmu.com")
+                .roles(List.of(Role.ROLE_ADMIN))
+                .build();
+        userRepository.save(admin);
+
+        List<String> files = new ArrayList<>();
+
+        files.add("");
+        files.add("https://img.freepik.com/free-photo/portrait-student-boy_23-2147668972.jpg?w=2000");
+
+        Announcement announcement;
+        announcement = Announcement.builder()
+                .title("Project Compo")
+                .description("Project deadline is today.")
+                .files(files)
+                .build();
+        announcementRepository.save(announcement);
+
+        List<String> files2 = new ArrayList<>();
+        files2.add("https://forms.gle/GMC97xXxN55ZPnyw9");
+
+        Announcement announcement2;
+        announcement2 = Announcement.builder()
+                .title("Satisfaction Survey")
+                .description("This is survey of co-working space.")
+                .files(files2)
+                .build();
+        announcementRepository.save(announcement2);
 
 //
 //        advisor2 = advisorRepository.save(Advisor.builder()
