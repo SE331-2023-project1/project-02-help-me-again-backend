@@ -40,7 +40,7 @@ public class AdvisorDaoDbImpl implements AdvisorDao {
     }
 
     @Override
-    public Page<Advisor> getTeachers(String filter, Pageable page) {
+    public Page<Advisor> getAdvisors(String filter, Pageable page) {
         return advisorRepository.findByUser_FirstnameIgnoreCaseContainingOrUser_LastnameIgnoreCaseContainingOrUser_UsernameIgnoreCaseContaining(filter,filter,filter,page);
     }
 }

@@ -33,7 +33,7 @@ import java.util.List;
 public interface LabMapper {
     LabMapper INSTANCE = Mappers.getMapper(LabMapper.class);
     List<StudentDTO> getStudentDTO(List<Student> students);
-    @Mapping(source = "ownStudent", target = "ownStudent")
+    @Mapping(source = "studentList", target = "studentList")
     @Mapping(source = "user.username", target = "username")
     @Mapping(source = "user.firstname", target = "name")
     @Mapping(source = "user.lastname", target = "surname")

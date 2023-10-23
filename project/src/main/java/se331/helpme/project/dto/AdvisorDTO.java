@@ -22,6 +22,6 @@ public class AdvisorDTO {
     List<String> images;
     String department;
     String academic;
-    List<OwnStudentDTO> ownStudent = new ArrayList<>();
+    List<OwnStudentDTO> studentList = new ArrayList<>();
     List<Role> roles = new ArrayList<>();
 }

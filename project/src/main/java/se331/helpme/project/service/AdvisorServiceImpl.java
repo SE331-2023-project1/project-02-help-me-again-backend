@@ -1,6 +1,5 @@
 package se331.helpme.project.service;
 
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -8,12 +7,13 @@ import org.springframework.stereotype.Service;
 import se331.helpme.project.dao.AdvisorDao;
 import se331.helpme.project.dao.StudentDao;
 import se331.helpme.project.entity.Advisor;
+import se331.helpme.project.security.user.UserDao;
 
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class TeacherServiceImpl implements TeacherService{
+public class AdvisorServiceImpl implements AdvisorService{
 
     final AdvisorDao advisorDao;
     final StudentDao studentDao;
@@ -70,4 +70,3 @@ public class TeacherServiceImpl implements TeacherService{
         return null;
     }
 }
-

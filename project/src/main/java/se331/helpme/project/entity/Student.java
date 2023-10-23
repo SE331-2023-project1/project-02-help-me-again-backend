@@ -2,6 +2,7 @@ package se331.helpme.project.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import se331.helpme.project.security.user.User;
 
 import java.util.List;
 

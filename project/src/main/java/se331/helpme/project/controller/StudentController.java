@@ -13,8 +13,11 @@ import org.springframework.web.server.ResponseStatusException;
 
 
 import se331.helpme.project.entity.Student;
+import se331.helpme.project.security.user.UserService;
 import se331.helpme.project.service.StudentService;
 import se331.helpme.project.util.LabMapper;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -62,8 +65,8 @@ public class StudentController {
     }
 
     @GetMapping("studentsByTeacher/{id}")
-    public ResponseEntity<?> getStudentsByTeacher(@PathVariable Long id) {
-        List<Student> student = studentService.getStudentsByTeacher(id);
+    public ResponseEntity<?> getStudentsByAdvisor(@PathVariable Long id) {
+        List<Student> student = studentService.getStudentsByAdvisor(id);
         if (student != null) {
             return ResponseEntity.ok(LabMapper.INSTANCE.getStudentDTO(student));
         } else {

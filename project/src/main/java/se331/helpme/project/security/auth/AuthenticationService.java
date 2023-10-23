@@ -4,12 +4,17 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import se331.helpme.project.entity.Advisor;
 import se331.helpme.project.entity.Student;
 import se331.helpme.project.repository.AdvisorRepository;
 import se331.helpme.project.repository.StudentRepository;
+import se331.helpme.project.security.config.JwtService;
 import se331.helpme.project.security.token.Token;
 import se331.helpme.project.security.token.TokenRepository;
 import se331.helpme.project.security.token.TokenType;
@@ -28,6 +33,7 @@ import java.util.Optional;
 public class AuthenticationService {
     private final UserRepository repository;
     private final TokenRepository tokenRepository;
+//    @Autowired
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;

@@ -4,7 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import se331.helpme.project.security.user.Role;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Data

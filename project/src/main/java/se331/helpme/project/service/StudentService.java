@@ -14,7 +14,7 @@ public interface StudentService {
 
     Page<Student> getStudents(String filter, Pageable pageable);
     List<Student> getAllStudents();
-    List<Student> getStudentsByTeacher(Long id);
+    List<Student> getStudentsByAdvisor(Long id);
 
     Student getStudent(Long id);
 

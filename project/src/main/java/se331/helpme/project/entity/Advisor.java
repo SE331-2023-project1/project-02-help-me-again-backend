@@ -2,6 +2,7 @@ package se331.helpme.project.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import se331.helpme.project.security.user.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,9 +24,11 @@ public class Advisor {
     List<String> images;
     String department;
     String academic;
+    String office;
+    String advisor_pic;
     @OneToMany(mappedBy = "advisor")
     @Builder.Default
-    List<Student> ownStudent = new ArrayList<>();
+    List<Student> studentList = new ArrayList<>();
     @OneToOne
     User user;
 }

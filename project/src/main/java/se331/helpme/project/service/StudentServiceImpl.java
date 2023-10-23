@@ -4,8 +4,11 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import se331.helpme.project.dao.AdvisorDao;
 import se331.helpme.project.dao.StudentDao;
 import se331.helpme.project.entity.Student;
+import se331.helpme.project.repository.StudentRepository;
+import se331.helpme.project.security.user.UserDao;
 
 import java.util.List;
 
@@ -13,7 +16,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class StudentServiceImpl implements StudentService {
     final StudentDao studentDao;
-    final TeacherDao teacherDao;
+    final AdvisorDao advisorDao;
     final StudentRepository studentRepository;
     final UserDao userDao;
     @Override
@@ -41,8 +44,8 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public List<Student> getStudentsByTeacher(Long id) {
-        return teacherDao.getTeacher(id).getOwnStudent();
+    public List<Student> getStudentsByAdvisor(Long id) {
+        return advisorDao.getAdvisor(id).getStudentList();
     }
     @Override
     public Student save(Student student) {
