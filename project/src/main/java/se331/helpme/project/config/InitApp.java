@@ -17,10 +17,13 @@ import java.util.List;
 public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
     final StudentRepository studentRepository;
     final AdvisorRepository advisorRepository;
+    final UserRepository userRepository;
+    final AnnouncementRepository announcementRepository;
 
     @Override
     @Transactional
     public void onApplicationEvent(ApplicationReadyEvent applicationReadyEvent) {
+
         Advisor advisor1,advisor2, advisor3, advisor4, advisor5, advisor6, advisor7, advisor8, advisor9, advisor10;
         advisor1 = advisorRepository.save(Advisor.builder()
                 .id(101L)

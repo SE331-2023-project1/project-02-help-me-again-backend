@@ -12,13 +12,16 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class AdvisorDTO {
+public class TeacherDTO {
+
     Long id;
-    String firstName;
-    String lastName;
+    String username;
+    String name;
+    String surname;
+    List<String> images;
     String department;
-    String email;
-    String office;
-    List<String> advisor_pic;
-    List<OwnStudentDTO> studentList = new ArrayList<>();
+    String academic;
+    List<OwnStudentDTO> ownStudent = new ArrayList<>();
+    List<Role> roles = new ArrayList<>();
 }
+

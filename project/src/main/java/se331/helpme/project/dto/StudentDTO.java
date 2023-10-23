@@ -13,10 +13,11 @@ import java.util.List;
 @AllArgsConstructor
 public class StudentDTO {
     Long id;
-    String student_ID;
-    String firstName;
-    String lastName;
-    String registered;
-    OwnAdvisorDTO advisor;
-    List<String> stu_pic;
+    String username;
+    String name;
+    String surname;
+    List<String> images;
+    String department;
+    OwnStudentDTO teacher;
+    List<Role> roles = new ArrayList<>();
 }

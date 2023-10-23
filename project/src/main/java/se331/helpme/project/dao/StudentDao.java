@@ -5,9 +5,14 @@ import org.springframework.data.domain.Pageable;
 import se331.helpme.project.entity.Student;
 
 public interface StudentDao {
+
         Integer getStudentSize();
-        Page<Student> getStudents(Integer pageSize, Integer page);
-        Student getStudentById(Long id);
         Student save(Student student);
-        Page<Student> getStudent(String firstname, Pageable page);
+        Page<Student> getStudents(Integer pageSize, Integer page);
+        Page<Student> getStudents(Pageable page);
+        Student getStudent(Long id);
+
+        Page<Student> getStudents(String filter, Pageable page);
+
 }
+

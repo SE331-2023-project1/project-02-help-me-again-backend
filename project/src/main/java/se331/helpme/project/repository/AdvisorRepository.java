@@ -10,9 +10,7 @@ import java.util.List;
 public interface AdvisorRepository extends JpaRepository<Advisor, Long> {
     List<Advisor> findAll();
 
-    Page<Advisor> findByFirstNameContainingIgnoreCaseOrAdvisor_ID
-            (String firstName,String advisor_ID, Pageable pageable);
-
-
+    Page<Advisor> findByUser_FirstnameIgnoreCaseContainingOrUser_LastnameIgnoreCaseContainingOrUser_UsernameIgnoreCaseContaining(String name, String surname, String department, Pageable pageRequest);
 }
+
 

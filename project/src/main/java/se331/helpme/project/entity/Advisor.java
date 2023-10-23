@@ -6,6 +6,7 @@ import lombok.*;
 import java.util.ArrayList;
 import java.util.List;
 
+
 @Data
 @Builder
 @Entity
@@ -16,18 +17,17 @@ public class Advisor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Exclude
     Long id;
-    String advisor_ID;
-    String firstName;
-    String lastName;
-    String email;
-    String office;
-
+    String name;
+    String surname;
     @ElementCollection
-    List<String> advisor_pic;
+    List<String> images;
     String department;
-
-    @OneToMany
+    String academic;
+    @OneToMany(mappedBy = "advisor")
     @Builder.Default
-    List<Student> studentList = new ArrayList<>();
+    List<Student> ownStudent = new ArrayList<>();
+    @OneToOne
+    User user;
 }
+
 

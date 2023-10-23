@@ -7,13 +7,13 @@ import se331.helpme.project.entity.Advisor;
 import java.util.Optional;
 
 public interface AdvisorDao {
+
     Integer getAdvisorSize();
-    Page<Advisor> getAdvisors(Integer pageSize, Integer page);
-
-    Advisor getAdvisorById(Long id);
-
     Advisor save(Advisor advisor);
-    Optional<Advisor> findById(Long id);
+    Page<Advisor> getAdvisors(Integer pageSize, Integer page);
+    Page<Advisor> getAdvisors(Pageable page);
+    Advisor getAdvisor(Long id);
 
-    Page<Advisor> getAdvisor(String firstName, Pageable page);
+    Page<Advisor> getAdvisors(String filter, Pageable page);
+
 }

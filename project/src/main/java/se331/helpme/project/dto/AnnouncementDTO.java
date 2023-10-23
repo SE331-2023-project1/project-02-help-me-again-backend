@@ -5,14 +5,16 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class OwnAdvisorDTO {
-
+public class AnnouncementDTO {
     Long id;
-    String name;
-
+    String title;
+    String description;
+    List<String> files;
+    User user;
 }
-

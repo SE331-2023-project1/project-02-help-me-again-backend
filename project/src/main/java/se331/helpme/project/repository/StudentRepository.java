@@ -8,11 +8,12 @@ import se331.helpme.project.entity.Student;
 
 import java.util.List;
 
-public interface StudentRepository extends JpaRepository<Student,Long> {
+public interface StudentRepository extends JpaRepository<Student, Long> {
     List<Student> findAll();
+    
+    Page<Student> findByUser_FirstnameIgnoreCaseContainingOrUser_LastnameIgnoreCaseContainingOrUser_UsernameIgnoreCaseContaining(String name, String surname, String department, Pageable pageRequest);
 
-    Page<Student> findByFirstNameContainingIgnoreCaseOrLastNameContainingIgnoreCaseOrStudent_ID
-            (String name, String surName, String studentID, String advisorName, Pageable PageRequest);
 }
+
 
 

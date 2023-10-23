@@ -10,18 +10,16 @@ import java.util.List;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-public class Student {
+public class Announcement {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Exclude
     Long id;
-    String name;
-    String surname;
+    String title;
+    String description;
     @ElementCollection
-    List<String> images;
-    String department;
+    List<String> files;
     @ManyToOne
-    Advisor advisor;
-    @OneToOne
     User user;
 }
+
