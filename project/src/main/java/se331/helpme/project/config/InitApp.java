@@ -69,8 +69,86 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         userT1.setRoles(List.of(Role.ROLE_ADVISOR));
         userT1.setDepartment("Software Engineer");
         userT1.setAcademic("CAMT");
-        userT1.setImages(Collections.singletonList("https://www.hindustantimes.com/ht-img/img/2023/09/02/1600x900/teachers_day_1693652054152_1693652065719.jpg"));
+        userT1.setImages(Collections.singletonList("https://gsep.pepperdine.edu/blog/images/how-much-could-a-masters-degree-increase-your-teaching-salary.png"));
         userRepository.save(userT1);
+
+        Advisor advisor1 = new Advisor();
+        advisor1.setUser(userT1);
+        advisorRepository.save(advisor1);
+
+        User userT2 = new User();
+        userT2.setUsername("PP");
+        userT2.setPassword(encoder.encode("PP"));
+        userT2.setFirstname("Tei");
+        userT2.setLastname("Pathathai");
+        userT2.setRoles(List.of(Role.ROLE_ADVISOR));
+        userT2.setDepartment("Software Engineer");
+        userT2.setAcademic("CAMT");
+        userT2.setImages(Collections.singletonList("https://www.hindustantimes.com/ht-img/img/2023/09/02/1600x900/teachers_day_1693652054152_1693652065719.jpg"));
+        userRepository.save(userT2);
+
+        Advisor advisor2 = new Advisor();
+        advisor2.setUser(userT2);
+        advisorRepository.save(advisor2);
+
+
+        User userS1 = new User();
+        userS1.setUsername("642115022");
+        userS1.setPassword(encoder.encode("642115022"));
+        userS1.setFirstname("Tanapong");
+        userS1.setLastname("Yamkamol");
+        userS1.setRoles(List.of(Role.ROLE_STUDENT));
+        userS1.setDepartment("Software Engineer");
+        userS1.setImages(Collections.singletonList("https://study.uq.edu.au/sites/default/files/styles/hero_xl/public/2022-06/admissions-hero.jpg?h=2087dbb7&itok=Tx6Xi1cU"));
+        userRepository.save(userS1);
+
+        Student student1 = new Student();
+        student1.setUser(userS1);
+        student1.setAdvisor(advisor1);
+        studentRepository.save(student1);
+
+
+        User userS2 = new User();
+        userS2.setUsername("642115042");
+        userS2.setPassword(encoder.encode("642115042"));
+        userS2.setFirstname("Sasipha");
+        userS2.setLastname("Thonkhan");
+        userS2.setRoles(List.of(Role.ROLE_STUDENT));
+        userS2.setDepartment("Software Engineer");
+        userS2.setImages(Collections.singletonList("https://img.freepik.com/free-photo/young-woman-attend-courses-girl-student-studying-holding-notebooks-showing-thumb-up-approval-recommending-company-standing-blue-background_1258-70145.jpg"));
+        userRepository.save(userS2);
+
+        Student student2 = new Student();
+        student2.setUser(userS2);
+        studentRepository.save(student2);
+
+
+        User userS3 = new User();
+        userS3.setUsername("642115047");
+        userS3.setPassword(encoder.encode("642115047"));
+        userS3.setFirstname("Siriyakorn");
+        userS3.setLastname("Chomchuen");
+        userS3.setRoles(List.of(Role.ROLE_STUDENT));
+        userS3.setDepartment("Software Engineer");
+        userS3.setImages(Collections.singletonList("https://vidusetha.lk/wp-content/uploads/2017/01/uni-student.jpg"));
+        userRepository.save(userS3);
+
+        Student student3 = new Student();
+        student3.setUser(userS3);
+        studentRepository.save(student3);
+
+        advisor1.setUser(userT1);
+        advisor1.getStudentList().add(student1);
+        advisor1.getStudentList().add(student2);
+        student1.setUser(userS1);
+        student1.setAdvisor(advisor1);
+        student2.setUser(userS2);
+        student2.setAdvisor(advisor1);
+
+        advisor2.setUser(userT2);
+        advisor2.getStudentList().add(student3);
+        student3.setUser(userS3);
+        student3.setAdvisor(advisor2);
 
 //
 //        advisor2 = advisorRepository.save(Advisor.builder()
