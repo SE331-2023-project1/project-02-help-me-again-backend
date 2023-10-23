@@ -7,10 +7,19 @@ import se331.helpme.project.entity.Student;
 import java.util.List;
 
 public interface StudentService {
+
+    Integer getStudentsSize();
+
     Page<Student> getStudents(Integer pageSize, Integer page);
-    Student getStudentById(Long id);
 
-    Page<Student> getStudent(String firstName, Pageable pageable);
+    Page<Student> getStudents(String filter, Pageable pageable);
+    List<Student> getAllStudents();
+    List<Student> getStudentsByTeacher(Long id);
+
+    Student getStudent(Long id);
+
     Student save(Student student);
-}
 
+    Student updateDetail(Student student);
+
+}

@@ -7,9 +7,21 @@ import se331.helpme.project.entity.Advisor;
 import java.util.List;
 
 public interface AdvisorService {
+
+    Integer getAdvisorsSize();
+
     Page<Advisor> getAdvisors(Integer pageSize, Integer page);
+
+    Page<Advisor> getAdvisors(String filter, Pageable pageable);
+
+    List<Advisor> getAllAdvisors();
+
     Advisor getAdvisor(Long id);
-    Advisor getAdvisorById (Long id);
+
     Advisor save(Advisor advisor);
-    Page<Advisor> getAdvisor(String firstName, Pageable page);
+
+    Advisor updateDetail(Advisor advisor);
+
+    Advisor getAdvisorByStudent(Long id);
 }
+
