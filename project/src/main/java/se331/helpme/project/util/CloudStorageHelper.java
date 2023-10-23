@@ -26,34 +26,62 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
-@Mapper
-public interface LabMapper {
-    LabMapper INSTANCE = Mappers.getMapper(LabMapper.class);
-    List<StudentDTO> getStudentDTO(List<Student> students);
-    @Mapping(source = "ownStudent", target = "ownStudent")
-    @Mapping(source = "user.username", target = "username")
-    @Mapping(source = "user.firstname", target = "name")
-    @Mapping(source = "user.lastname", target = "surname")
-    @Mapping(source = "user.roles", target = "roles")
-    @Mapping(source = "user.images", target = "images")
-    @Mapping(source = "user.department", target = "department")
-    @Mapping(source = "user.academic", target = "academic")
-    AdvisorDTO getAdvisorDTO(Advisor advisor);
-    List<AdvisorDTO> getAdvisorDTO(List<Advisor> advisors);
-    @Mapping(source = "teacher", target = "teacher")
-    @Mapping(source = "user.username", target = "username")
-    @Mapping(source = "user.firstname", target = "name")
-    @Mapping(source = "user.lastname", target = "surname")
-    @Mapping(source = "user.roles", target = "roles")
-    @Mapping(source = "user.images", target = "images")
-    @Mapping(source = "user.department", target = "department")
+@Component
+public class CloudStorageHelper {
+    private static Storage storage = null;
 
-    StudentDTO getStudentDTO(Student student);
-    AnnouncementDTO getAnnouncementDTO(Announcement announcement);
-    @Mapping(source = "announcement", target = "announcement")
-    @Mapping(source = "user.title", target = "title")
-    @Mapping(source = "user.description", target = "description")
-    @Mapping(source = "user.files", target = "files")
-    List <AnnouncementDTO> getAnnouncementDTO(List<Announcement> announcement);
+    static {
+        InputStream serviceAccount = null;
+        try {
+            serviceAccount = new ClassPathResource("imageupload-f10a5-e7c96cbf57f4.json").getInputStream();
+            storage = StorageOptions.newBuilder()
+                    .setCredentials(GoogleCredentials.fromStream(serviceAccount))
+                    .setProjectId("imageupload-f10a5")
+                    .build().getService();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    // [END init]
+
+    public String uploadFile(MultipartFile filePart, final String bucketName) throws IOException {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HHmmssSSS");
+        String dtString = sdf.format(new Date());
+        final String fileName = dtString + "-" + filePart.getOriginalFilename();
+        InputStream is = filePart.getInputStream();
+        ByteArrayOutputStream os = new ByteArrayOutputStream();
+        byte[] readBuf = new byte[4096];
+        while (is.available() > 0) {
+            int bytesRead = is.read(readBuf);
+            os.write(readBuf, 0, bytesRead);
+        }
+        BlobInfo blobInfo = storage.create(BlobInfo.newBuilder(bucketName, fileName)
+                .setAcl(new ArrayList<>(Arrays.asList(Acl.of(Acl.User.ofAllUsers(), Acl.Role.READER))))
+                .setContentType(filePart.getContentType()).build(), os.toByteArray());
+        return blobInfo.getMediaLink();
+    }
+
+
+    public String getImageUrl(MultipartFile file, final String bucket) throws IOException, ServletException {
+        final String fileName = file.getOriginalFilename();
+        if (fileName != null && !fileName.isEmpty() && fileName.contains(".")) {
+            final String extension = fileName.substring(fileName.lastIndexOf('.')+ 1);
+            String[] allowedExt = { "jpg", "jpeg", "png", "gif" };
+            for (String s : allowedExt) {
+                if (extension.equals(s)) {
+                    return this.uploadFile(file, bucket);
+                }
+            }
+            throw new ServletException("file must be an image");
+        }
+        return null;
+    }
+
+    public StorageFileDTO getStorageFileDto(MultipartFile file, final String bucket) throws IOException, ServletException {
+        String urlName = this.uploadFile(file, bucket);
+        return StorageFileDTO.builder().name(urlName).build();
+    }
+
+
 }
 

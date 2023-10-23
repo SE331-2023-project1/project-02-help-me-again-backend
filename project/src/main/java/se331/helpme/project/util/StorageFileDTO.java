@@ -5,6 +5,6 @@ import lombok.Data;
 
 @Builder
 @Data
-public class StorageFileDto {
+public class StorageFileDTO {
     String name;
 }
