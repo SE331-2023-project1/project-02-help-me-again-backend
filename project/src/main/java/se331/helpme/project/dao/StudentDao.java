@@ -1,12 +1,13 @@
 package se331.helpme.project.dao;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import se331.helpme.project.entity.Student;
 
-import java.util.List;
-
 public interface StudentDao {
-
         Integer getStudentSize();
-        List<Student> getStudents(Integer pageSize, Integer page);
-        Student getStudent(Long id);
+        Page<Student> getStudents(Integer pageSize, Integer page);
+        Student getStudentById(Long id);
+        Student save(Student student);
+        Page<Student> getStudent(String firstname, Pageable page);
 }

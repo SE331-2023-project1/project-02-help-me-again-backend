@@ -1,17 +1,33 @@
 package se331.helpme.project.entity;
 
-import lombok.Builder;
-import lombok.Data;
+import jakarta.persistence.*;
+import lombok.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Builder
+@Entity
+@NoArgsConstructor
+@AllArgsConstructor
 public class Advisor {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @EqualsAndHashCode.Exclude
     Long id;
+    String advisor_ID;
     String firstName;
     String lastName;
-    String department;
     String email;
     String office;
-    String advisor_pic;
+
+    @ElementCollection
+    List<String> advisor_pic;
+    String department;
+
+    @OneToMany
+    @Builder.Default
+    List<Student> studentList = new ArrayList<>();
 }
 
