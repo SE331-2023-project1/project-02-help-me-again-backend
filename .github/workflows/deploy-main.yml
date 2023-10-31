@@ -42,7 +42,7 @@ jobs:
         with:
           push: true
           tags: sasipha/help-me-be:latest
-          context: .
+          context: ./project
 
       -
         name: Copy file via ssh password
