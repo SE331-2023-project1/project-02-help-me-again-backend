@@ -126,6 +126,7 @@ public class AuthenticationService {
         return AuthenticationResponse.builder()
                 .accessToken(jwtToken)
                 .refreshToken(refreshToken)
+                .username(user.getUsername())
                 .userRole(userRoles)
                 .id(id)
 //            .user(LabMapper.INSTANCE.getOrganizerAuthDTO(user.getOrganizer()))
