@@ -35,76 +35,131 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
 
 //        Advisor advisor1,advisor2, advisor3, advisor4, advisor5, advisor6, advisor7, advisor8, advisor9, advisor10;
 
-        User user1 = new User();
-        user1.setFirstname("Siriyakorn");
-        user1.setLastname("CHomhuen");
-        user1.setUsername("Baibua");
-        userRepository.save(user1);
-        Advisor veevi1 = new Advisor();
-        veevi1.setUser(user1);
-        advisorRepository.save(veevi1);
+//        User user1 = new User();
+//        user1.setFirstname("Siriyakorn");
+//        user1.setLastname("Chomhuen");
+//        user1.setUsername("Baibua");
+//        userRepository.save(user1);
+//        Student student1 = new Student();
+//        student1.setUser(user1);
+//        studentRepository.save(student1);
+//
+//        User user2 = new User();
+//        user2.setFirstname("Sasipha");
+//        user2.setLastname("Tongkhan");
+//        user2.setUsername("Nameeiei");
+//        userRepository.save(user2);
+//        Student student2 = new Student();
+//        student2.setUser(user2);
+//        studentRepository.save(student2);
+//
+//        User user3 = new User();
+//        user3.setFirstname("Thanapong");
+//        user3.setLastname("Happy");
+//        user3.setUsername("Su");
+//        userRepository.save(user3);
+//        Student student3 = new Student();
+//        student1.setUser(user3);
+//        studentRepository.save(student3);
+//
+//        User user4 = new User();
+//        user4.setFirstname("Emily");
+//        user4.setLastname("Johnson");
+//        user4.setUsername("Emily");
+//        userRepository.save(user4);
+//        Student student4 = new Student();
+//        student4.setUser(user4);
+//        studentRepository.save(student4);
 
-        User user2 = new User();
-        user2.setFirstname("Sasipha");
-        user2.setLastname("Tongkhan");
-        user2.setUsername("Nameeiei");
-        userRepository.save(user2);
-        Advisor veevi2 = new Advisor();
-        veevi2.setUser(user2);
-        advisorRepository.save(veevi2);
 
-        User user3 = new User();
-        user3.setFirstname("Thanapong");
-        user3.setLastname("Happy");
-        user3.setUsername("Su");
-        userRepository.save(user3);
-        Student veevi3 = new Student();
-        veevi3.setUser(user3);
-        studentRepository.save(veevi3);
+        //Username and Password for each role
 
+        //Advisors
         PasswordEncoder encoder = new BCryptPasswordEncoder();
         User userT1 = new User();
         userT1.setUsername("TT5678");
         userT1.setPassword(encoder.encode("TT5678"));
-        userT1.setFirstname("Chartchai");
-        userT1.setLastname("Doungsa-ard");
+//        userT1.setFirstName("Prof. Chartchai");
+//        userT1.setLastName("Doungsa-ard");
         userT1.setRoles(List.of(Role.ROLE_ADVISOR));
         userT1.setDepartment("Software Engineer");
         userT1.setAcademic("CAMT");
-        userT1.setImages(Collections.singletonList("https://gsep.pepperdine.edu/blog/images/how-much-could-a-masters-degree-increase-your-teaching-salary.png"));
+        userT1.setImages(Collections.singletonList("https://randomuser.me/api/portraits/men/32.jpg"));
         userRepository.save(userT1);
 
         Advisor advisor1 = new Advisor();
+        advisor1.setFirstName("Prof. Chartchai");
+        advisor1.setLastName("Doungsa-ard");
         advisor1.setUser(userT1);
         advisorRepository.save(advisor1);
 
         User userT2 = new User();
         userT2.setUsername("PP1234");
         userT2.setPassword(encoder.encode("PP1234"));
-        userT2.setFirstname("Tei");
-        userT2.setLastname("Pathathai");
+//        userT2.setFirstName("Prof. Tei");
+//        userT2.setLastName("Pathathai");
         userT2.setRoles(List.of(Role.ROLE_ADVISOR));
         userT2.setDepartment("Software Engineer");
         userT2.setAcademic("CAMT");
-        userT2.setImages(Collections.singletonList("https://www.hindustantimes.com/ht-img/img/2023/09/02/1600x900/teachers_day_1693652054152_1693652065719.jpg"));
+        userT2.setImages(Collections.singletonList("https://randomuser.me/api/portraits/women/33.jpg"));
         userRepository.save(userT2);
 
         Advisor advisor2 = new Advisor();
+        advisor2.setFirstName("Prof. Tei");
+        advisor2.setLastName("Pathathai");
         advisor2.setUser(userT2);
         advisorRepository.save(advisor2);
 
+        User userT3 = new User();
+        userT3.setUsername("David123");
+        userT3.setPassword(encoder.encode("David123"));
+//        userT3.setFirstName("Prof. David");
+//        userT3.setLastName("Smith");
+        userT3.setRoles(List.of(Role.ROLE_ADVISOR));
+        userT3.setDepartment("Software Engineer");
+        userT3.setAcademic("CAMT");
+        userT3.setImages(Collections.singletonList("https://randomuser.me/api/portraits/men/33.jpg"));
+        userRepository.save(userT3);
 
+
+        Advisor advisor3 = new Advisor();
+        advisor3.setFirstName("Prof. David");
+        advisor3.setLastName("Smith");
+        advisor3.setUser(userT3);
+        advisorRepository.save(advisor3);
+
+        User userT4 = new User();
+        userT4.setUsername("John123");
+        userT4.setPassword(encoder.encode("John123"));
+//        userT4.setFirstName("Prof. John");
+//        userT4.setLastName("Anderson");
+        userT4.setRoles(List.of(Role.ROLE_ADVISOR));
+        userT4.setDepartment("Economic");
+        userT4.setAcademic("ECON");
+        userT4.setImages(Collections.singletonList("https://randomuser.me/api/portraits/men/34.jpg"));
+        userRepository.save(userT4);
+
+
+        Advisor advisor4 = new Advisor();
+        advisor4.setFirstName("Prof. John");
+        advisor4.setLastName("Anderson");
+        advisor4.setUser(userT4);
+        advisorRepository.save(advisor4);
+
+        // Students
         User userS1 = new User();
         userS1.setUsername("642115022");
         userS1.setPassword(encoder.encode("642115022"));
-        userS1.setFirstname("Tanapong");
-        userS1.setLastname("Yamkamol");
+//        userS1.setFirstName("Tanapong");
+//        userS1.setLastName("Yamkamol");
         userS1.setRoles(List.of(Role.ROLE_STUDENT));
         userS1.setDepartment("Software Engineer");
-        userS1.setImages(Collections.singletonList("https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freepik.com%2Ffree-photos-vectors%2Fsmiling-student&psig=AOvVaw1m_sHaYID4yu3DCTynn3DG&ust=1698185254998000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCICV4ZiXjYIDFQAAAAAdAAAAABAE"));
+        userS1.setImages(Collections.singletonList("https://randomuser.me/api/portraits/men/1.jpg"));
         userRepository.save(userS1);
 
         Student student1 = new Student();
+        student1.setFirstName("Tanapong");
+        student1.setLastName("Yamkamol");
         student1.setUser(userS1);
         student1.setAdvisor(advisor1);
         studentRepository.save(student1);
@@ -113,14 +168,16 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         User userS2 = new User();
         userS2.setUsername("642115042");
         userS2.setPassword(encoder.encode("642115042"));
-        userS2.setFirstname("Sasipha");
-        userS2.setLastname("Thonkhan");
+//        userS2.setFirstName("Sasipha");
+//        userS2.setLastName("Thonkhan");
         userS2.setRoles(List.of(Role.ROLE_STUDENT));
         userS2.setDepartment("Software Engineer");
-        userS2.setImages(Collections.singletonList("https://img.freepik.com/free-photo/young-woman-attend-courses-girl-student-studying-holding-notebooks-showing-thumb-up-approval-recommending-company-standing-blue-background_1258-70145.jpg"));
+        userS2.setImages(Collections.singletonList("https://randomuser.me/api/portraits/women/1.jpg"));
         userRepository.save(userS2);
 
         Student student2 = new Student();
+        student2.setFirstName("Sasipha");
+        student2.setLastName("Thonkhan");
         student2.setUser(userS2);
         studentRepository.save(student2);
 
@@ -128,37 +185,218 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         User userS3 = new User();
         userS3.setUsername("642115047");
         userS3.setPassword(encoder.encode("642115047"));
-        userS3.setFirstname("Siriyakorn");
-        userS3.setLastname("Chomchuen");
+//        userS3.setFirstName("Siriyakorn");
+//        userS3.setLastName("Chomchuen");
         userS3.setRoles(List.of(Role.ROLE_STUDENT));
         userS3.setDepartment("Software Engineer");
-        userS3.setImages(Collections.singletonList("https://vidusetha.lk/wp-content/uploads/2017/01/uni-student.jpg"));
+        userS3.setImages(Collections.singletonList("https://randomuser.me/api/portraits/women/2.jpg"));
         userRepository.save(userS3);
 
         Student student3 = new Student();
+        student3.setFirstName("Siriyakorn");
+        student3.setLastName("Chomchuen");
         student3.setUser(userS3);
         studentRepository.save(student3);
 
+        User userS4 = new User();
+        userS4.setUsername("Emily123");
+        userS4.setPassword(encoder.encode("Emily123"));
+//        userS4.setFirstName("Emily");
+//        userS4.setLastName("Johnson");
+        userS4.setRoles(List.of(Role.ROLE_STUDENT));
+        userS4.setDepartment("Fine Art");
+        userS4.setImages(Collections.singletonList("https://randomuser.me/api/portraits/women/4.jpg"));
+        userRepository.save(userS4);
+
+        Student student4 = new Student();
+        student4.setFirstName("Emily");
+        student4.setLastName("Johnson");
+        student4.setUser(userS4);
+        studentRepository.save(student4);
+
+        User userS5 = new User();
+        userS5.setUsername("Ethan123");
+        userS5.setPassword(encoder.encode("Ethan123"));
+//        userS5.setFirstName("Ethan");
+//        userS5.setLastName("Smith");
+        userS5.setRoles(List.of(Role.ROLE_STUDENT));
+        userS5.setDepartment("Fine Art");
+        userS5.setImages(Collections.singletonList("https://randomuser.me/api/portraits/men/5.jpg"));
+        userRepository.save(userS5);
+
+        Student student5 = new Student();
+        student5.setFirstName("Ethan");
+        student5.setLastName("Smith");
+        student5.setUser(userS5);
+        studentRepository.save(student5);
+
+        User userS6 = new User();
+        userS6.setUsername("Olivia123");
+        userS6.setPassword(encoder.encode("Olivia123"));
+//        userS6.setFirstName("Olivia");
+//        userS6.setLastName("Martinez");
+        userS6.setRoles(List.of(Role.ROLE_STUDENT));
+        userS6.setDepartment("Fine Art");
+        userS6.setImages(Collections.singletonList("https://randomuser.me/api/portraits/women/6.jpg"));
+        userRepository.save(userS6);
+
+        Student student6 = new Student();
+        student6.setFirstName("Olivia");
+        student6.setLastName("Martinez");
+        student6.setUser(userS6);
+        studentRepository.save(student6);
+
+        User userS7 = new User();
+        userS7.setUsername("Ava123");
+        userS7.setPassword(encoder.encode("Ava123"));
+//        userS7.setFirstName("Ava");
+//        userS7.setLastName("Thompson");
+        userS7.setRoles(List.of(Role.ROLE_STUDENT));
+        userS7.setDepartment("History");
+        userS7.setImages(Collections.singletonList("https://randomuser.me/api/portraits/women/7.jpg"));
+        userRepository.save(userS7);
+
+        Student student7 = new Student();
+        student7.setFirstName("Ava");
+        student7.setLastName("Thompson");
+        student7.setUser(userS7);
+        studentRepository.save(student7);
+
+        User userS8 = new User();
+        userS8.setUsername("Noah123");
+        userS8.setPassword(encoder.encode("Noah123"));
+//        userS8.setFirstName("Noah");
+//        userS8.setLastName("Williams");
+        userS8.setRoles(List.of(Role.ROLE_STUDENT));
+        userS8.setDepartment("Chemistry");
+        userS8.setImages(Collections.singletonList("https://randomuser.me/api/portraits/men/8.jpg"));
+        userRepository.save(userS8);
+
+        Student student8 = new Student();
+        student8.setFirstName("Noah");
+        student8.setLastName("Williams");
+        student8.setUser(userS8);
+        studentRepository.save(student8);
+
+        User userS9 = new User();
+        userS9.setUsername("Sophia123");
+        userS9.setPassword(encoder.encode("Sophia123"));
+//        userS9.setFirstName("Sophia");
+//        userS9.setLastName("Brown");
+        userS9.setRoles(List.of(Role.ROLE_STUDENT));
+        userS9.setDepartment("Mathematics");
+        userS9.setImages(Collections.singletonList("https://randomuser.me/api/portraits/women/9.jpg"));
+        userRepository.save(userS9);
+
+        Student student9 = new Student();
+        student9.setFirstName("Sophia");
+        student9.setLastName("Brown");
+        student9.setUser(userS9);
+        studentRepository.save(student9);
+
+        User userS10 = new User();
+        userS10.setUsername("Jackson123");
+        userS10.setPassword(encoder.encode("Jackson123"));
+//        userS10.setFirstName("Jackson");
+//        userS10.setLastName("Davis");
+        userS10.setRoles(List.of(Role.ROLE_STUDENT));
+        userS10.setDepartment("Mathematics");
+        userS10.setImages(Collections.singletonList("https://randomuser.me/api/portraits/men/10.jpg"));
+        userRepository.save(userS10);
+
+        Student student10 = new Student();
+        student10.setFirstName("Jackson");
+        student10.setLastName("Davis");
+        student10.setUser(userS10);
+        studentRepository.save(student10);
+
+        User userS11 = new User();
+        userS11.setUsername("Isabella123");
+        userS11.setPassword(encoder.encode("Isabella123"));
+//        userS11.setFirstName("Isabella");
+//        userS11.setLastName("Rodriguez");
+        userS11.setRoles(List.of(Role.ROLE_STUDENT));
+        userS11.setDepartment("Psychology");
+        userS11.setImages(Collections.singletonList("https://randomuser.me/api/portraits/women/11.jpg"));
+        userRepository.save(userS11);
+
+        Student student11 = new Student();
+        student11.setFirstName("Isabella");
+        student11.setLastName("Rodriguez");
+        student11.setUser(userS11);
+        studentRepository.save(student11);
+
+        User userS12 = new User();
+        userS12.setUsername("Aiden123");
+        userS12.setPassword(encoder.encode("Aiden123"));
+//        userS12.setFirstName("Aiden");
+//        userS12.setLastName("Wilson");
+        userS12.setRoles(List.of(Role.ROLE_STUDENT));
+        userS12.setDepartment("History");
+        userS12.setImages(Collections.singletonList("https://randomuser.me/api/portraits/men/12.jpg"));
+        userRepository.save(userS12);
+
+        Student student12 = new Student();
+        student12.setFirstName("Aiden");
+        student12.setLastName("Wilson");
+        student12.setUser(userS12);
+        studentRepository.save(student12);
+
+
+        //Set advisor and students
         advisor1.setUser(userT1);
         advisor1.getStudentList().add(student1);
         advisor1.getStudentList().add(student2);
+        advisor1.getStudentList().add(student9);
         student1.setUser(userS1);
         student1.setAdvisor(advisor1);
         student2.setUser(userS2);
         student2.setAdvisor(advisor1);
+        student9.setUser(userS9);
+        student9.setAdvisor(advisor1);
 
         advisor2.setUser(userT2);
         advisor2.getStudentList().add(student3);
+        advisor2.getStudentList().add(student4);
+        advisor1.getStudentList().add(student10);
         student3.setUser(userS3);
         student3.setAdvisor(advisor2);
+        student4.setUser(userS4);
+        student4.setAdvisor(advisor2);
+        student10.setUser(userS10);
+        student10.setAdvisor(advisor2);
+
+        advisor3.setUser(userT3);
+        advisor3.getStudentList().add(student5);
+        advisor3.getStudentList().add(student6);
+        advisor1.getStudentList().add(student11);
+        student5.setUser(userS5);
+        student5.setAdvisor(advisor3);
+        student6.setUser(userS6);
+        student6.setAdvisor(advisor3);
+        student11.setUser(userS11);
+        student11.setAdvisor(advisor3);
+
+        advisor4.setUser(userT4);
+        advisor4.getStudentList().add(student7);
+        advisor4.getStudentList().add(student8);
+        advisor1.getStudentList().add(student12);
+        student7.setUser(userS7);
+        student7.setAdvisor(advisor4);
+        student8.setUser(userS8);
+        student8.setAdvisor(advisor4);
+        student12.setUser(userS12);
+        student12.setAdvisor(advisor4);
+
+
 
 
         User admin;
         admin = User.builder()
                 .username("admin")
                 .password(encoder.encode("admin"))
-                .firstname("admin")
-                .lastname("admin")
+//                .firstName("admin")
+//                .lastName("admin")
                 .email("admin@cmu.com")
                 .roles(List.of(Role.ROLE_ADMIN))
                 .build();

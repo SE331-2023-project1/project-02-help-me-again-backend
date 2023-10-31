@@ -16,10 +16,10 @@ import java.util.List;
 public class StudentDTO {
     Long id;
     String username;
-    String name;
-    String surname;
+    String firstName;
+    String lastName;
     List<String> images;
     String department;
-    OwnStudentDTO teacher;
+    OwnStudentDTO advisor;
     List<Role> roles = new ArrayList<>();
 }

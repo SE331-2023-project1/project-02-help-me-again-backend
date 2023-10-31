@@ -44,17 +44,20 @@ public class AuthenticationService {
 
         User userStudent = User.builder()
                 .username(request.getUsername())
-                .firstname(request.getFirstname())
-                .lastname(request.getLastname())
+//                .firstName(request.getFirstName())
+//                .lastName(request.getLastName())
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
                 .roles(List.of(Role.ROLE_STUDENT))
                 .images(request.getImages())
                 .build();
         var savedUser = repository.save(userStudent);
+
         Advisor advisor = new Advisor();
         advisor = advisorRepository.getById(1L).getUser().getAdvisor();
         Student student = new Student();
+        student.setFirstName(request.getFirstName());
+        student.setLastName(request.getLastName());
         student.setUser(savedUser);
         student.setAdvisor(advisor);
         studentRepository.save(student);
@@ -72,8 +75,8 @@ public class AuthenticationService {
 
         User userAdvisor = User.builder()
                 .username(request.getUsername())
-                .firstname(request.getFirstname())
-                .lastname(request.getLastname())
+//                .firstName(request.getFirstName())
+//                .lastName(request.getLastName())
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
                 .roles(List.of(Role.ROLE_ADVISOR))
@@ -81,6 +84,8 @@ public class AuthenticationService {
                 .build();
         var savedUser = repository.save(userAdvisor);
         Advisor advisor = new Advisor();
+        advisor.setFirstName(request.getFirstName());
+        advisor.setLastName(request.getLastName());
         advisor.setUser(savedUser);
         advisorRepository.save(advisor);
         var jwtToken = jwtService.generateToken(userAdvisor);

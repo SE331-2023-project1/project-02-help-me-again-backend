@@ -42,7 +42,7 @@ public class StudentDaoDbImpl implements StudentDao {
 
     @Override
     public Page<Student> getStudents(String filter, Pageable page) {
-        return studentRepository.findByUser_FirstnameIgnoreCaseContainingOrUser_LastnameIgnoreCaseContainingOrUser_UsernameIgnoreCaseContaining(filter,filter,filter,page);
+        return studentRepository.findByFirstNameIgnoreCaseContainingOrLastNameIgnoreCaseContainingOrUser_UsernameIgnoreCaseContaining(filter,filter,filter,page);
     }
 }
 

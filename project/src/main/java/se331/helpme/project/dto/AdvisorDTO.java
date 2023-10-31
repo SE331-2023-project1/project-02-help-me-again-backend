@@ -17,8 +17,8 @@ public class AdvisorDTO {
 
     Long id;
     String username;
-    String name;
-    String surname;
+    String firstName;
+    String lastName;
     List<String> images;
     String department;
     String academic;

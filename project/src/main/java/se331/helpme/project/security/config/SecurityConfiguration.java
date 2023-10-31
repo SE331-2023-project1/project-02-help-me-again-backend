@@ -41,9 +41,9 @@ public class SecurityConfiguration {
                             .requestMatchers("/api/v1/announcements").permitAll()
                             .requestMatchers("/users/**").permitAll()
                             .requestMatchers(HttpMethod.GET,"/advisors").permitAll()
-//                            .requestMatchers(HttpMethod.PUT,"/teachers").permitAll()
+//                            .requestMatchers(HttpMethod.PUT,"/advisors").permitAll()
                             .requestMatchers(HttpMethod.OPTIONS,"/**").permitAll()
-//                            .requestMatchers(HttpMethod.POST,"/teachers").hasRole("ADMIN")
+//                            .requestMatchers(HttpMethod.POST,"/advisors").hasRole("ADMIN")
                             .anyRequest().authenticated();
                 })
                 .sessionManagement((session) -> {

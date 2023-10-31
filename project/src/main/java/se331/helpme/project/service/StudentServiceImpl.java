@@ -56,8 +56,8 @@ public class StudentServiceImpl implements StudentService {
     public Student updateDetail(Student student) {
         Student updateStudent = studentDao.getStudent(student.getId());
         if (updateStudent != null) {
-            updateStudent.getUser().setFirstname(student.getName());
-            updateStudent.getUser().setLastname(student.getSurname());
+            updateStudent.setFirstName(student.getFirstName());
+            updateStudent.setLastName(student.getLastName());
 
 
             studentDao.save(updateStudent);

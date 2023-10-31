@@ -18,8 +18,8 @@ public class Advisor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Exclude
     Long id;
-    String name;
-    String surname;
+    String firstName;
+    String lastName;
     @ElementCollection
     List<String> images;
     String department;

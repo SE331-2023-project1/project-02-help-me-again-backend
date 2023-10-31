@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 public class OwnAdvisorDTO {
 
     Long id;
-    String name;
+    String firstName;
 
 }
 

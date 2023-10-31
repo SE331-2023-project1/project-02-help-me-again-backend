@@ -64,7 +64,7 @@ public class StudentController {
         return ResponseEntity.ok(LabMapper.INSTANCE.getStudentDTO(studentService.updateDetail(student)));
     }
 
-    @GetMapping("studentsByTeacher/{id}")
+    @GetMapping("studentsByAdvisor/{id}")
     public ResponseEntity<?> getStudentsByAdvisor(@PathVariable Long id) {
         List<Student> student = studentService.getStudentsByAdvisor(id);
         if (student != null) {

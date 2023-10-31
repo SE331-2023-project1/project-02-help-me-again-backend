@@ -58,8 +58,8 @@ public class AdvisorServiceImpl implements AdvisorService{
         Advisor updateAdvisor = advisorDao.getAdvisor(advisor.getId());
         if (updateAdvisor != null) {
 
-            updateAdvisor.getUser().setFirstname(advisor.getName());
-            updateAdvisor.getUser().setLastname(advisor.getSurname());
+            updateAdvisor.setFirstName(advisor.getFirstName());
+            updateAdvisor.setLastName(advisor.getLastName());
 //            updateAdvisor.getUser().setDepartment(advisor.getDepartment());
 
             advisorDao.save(updateAdvisor);

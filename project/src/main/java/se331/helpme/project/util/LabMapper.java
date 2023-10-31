@@ -35,18 +35,18 @@ public interface LabMapper {
     List<StudentDTO> getStudentDTO(List<Student> students);
     @Mapping(source = "studentList", target = "studentList")
     @Mapping(source = "user.username", target = "username")
-    @Mapping(source = "user.firstname", target = "name")
-    @Mapping(source = "user.lastname", target = "surname")
+//    @Mapping(source = "user.firstname", target = "firstName")
+//    @Mapping(source = "user.lastname", target = "lastName")
     @Mapping(source = "user.roles", target = "roles")
     @Mapping(source = "user.images", target = "images")
     @Mapping(source = "user.department", target = "department")
     @Mapping(source = "user.academic", target = "academic")
     AdvisorDTO getAdvisorDTO(Advisor advisor);
     List<AdvisorDTO> getAdvisorDTO(List<Advisor> advisors);
-    @Mapping(source = "advisor", target = "teacher")
+    @Mapping(source = "advisor", target = "advisor")
     @Mapping(source = "user.username", target = "username")
-    @Mapping(source = "user.firstname", target = "name")
-    @Mapping(source = "user.lastname", target = "surname")
+//    @Mapping(source = "user.firstname", target = "firstName")
+//    @Mapping(source = "user.lastname", target = "lastName")
     @Mapping(source = "user.roles", target = "roles")
     @Mapping(source = "user.images", target = "images")
     @Mapping(source = "user.department", target = "department")
