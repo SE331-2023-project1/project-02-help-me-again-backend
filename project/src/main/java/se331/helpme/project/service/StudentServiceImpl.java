@@ -6,6 +6,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import se331.helpme.project.dao.AdvisorDao;
 import se331.helpme.project.dao.StudentDao;
+import se331.helpme.project.entity.Advisor;
 import se331.helpme.project.entity.Student;
 import se331.helpme.project.repository.StudentRepository;
 import se331.helpme.project.security.user.UserDao;
@@ -55,10 +56,11 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public Student updateDetail(Student student) {
         Student updateStudent = studentDao.getStudent(student.getId());
+        Advisor advisor = advisorDao.getAdvisor(student.getAdvisor().getId());
         if (updateStudent != null) {
             updateStudent.setFirstName(student.getFirstName());
             updateStudent.setLastName(student.getLastName());
-
+            updateStudent.setAdvisor(advisor);
 
             studentDao.save(updateStudent);
 
